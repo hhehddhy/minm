@@ -1,0 +1,9 @@
+@pytest.mark.usefixtures('appium_setup')
+@pytest.mark.usefixtures('driver_setup')
+class TestA3040Controls:
+    @pytest.fixture()
+    def setup(self):
+        log.info("进入设备主页面")
+        app_page.hp_sound_core_main_page.loc_product_name.ak_click()
+        # 如果弹出固件升级提示框，则点击取消
+        app_page.hp_device_main_page.cancel_update_firmware.ak_click_if_exist()
